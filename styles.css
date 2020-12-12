@@ -15,7 +15,7 @@ body {
 /* Container needed to position the button. Adjust the width as needed */
 .container {
     position: relative;
-    width: 30%;
+    width: 60%;
 }
 
 /* Make the image responsive */
