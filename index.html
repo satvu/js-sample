@@ -2,10 +2,61 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Simple Layout</title>
+        <title>js-sample</title>
+        <link type="text/css" rel="stylesheet" href="./styles.css">
     </head>
     <body>
+        <div class="flex-box">
 
+            <h1>A Letter from My Penpal</h1>
+            <p>Credit images and stuff</p>
 
+            <div class="container">
+                <img src="./letter-stack.jpg"/>
+                <button id="modalButton" class='btn'>Click to open a letter!</button>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <br> <br>
+                <p style="text-align: right">February 12, 2021</p>
+                <p>Dear friend,</p>
+                <p>
+                    Ni hao! That means hello in Mandarin! I am writing this letter to you all the way from China. Today is Chinese New Year.
+                    We celebrate our new year on a different day than January 1st because our new year is based on a different calendar. Our calendar uses the moon instead of the sun.
+                    Today, I will be eating dumplings for good luck and watching "Lion Dances". Here's a picture of a lion dance below!
+                </p> <br>
+                <img src="lion-dance.jpeg" style="width: 50%;"/> <br>
+                <p>
+                    The lions scare away bad spirits and help us bring in good luck for the year. Even though you might not celebrate this holiday, I still hope you have a wonderful day and a lucky year!
+                </p>
+                <p>
+                    Best, 
+                </p>
+                <p>
+                    Wu Shasha
+                </p>
+            </div>
+        </div>
+
+        <script>
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("modalButton");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function() {
+                modal.style.display = "block";
+                var audio = new Audio("./open-letter.mp3");
+                audio.play();
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
     </body>
 </html>
