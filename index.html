@@ -7,17 +7,16 @@
         <link type="text/css" rel="stylesheet" href="./styles.css">
     </head>
     <body>
-
         <div class="flex-box">
             <h1>A Letter from My Penpal</h1>
             <p><a href="./credits.html">Image Credits</a></p>
             <br>
             <div class="container">
-                <img src="./letter-stack.jpg" alt="A stack of letters"/>
+                <img id="letter-stack" src="./letter-stack.jpg" alt="A stack of letters"/>
                 <button id="modalButton" class='btn'>Click to open a letter!</button>
+                <div id="loader" class="loader"></div>
             </div>
         </div>
-
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -46,11 +45,25 @@
             var modal = document.getElementById("myModal");
             var btn = document.getElementById("modalButton");
             var span = document.getElementsByClassName("close")[0];
+            var audio = new Audio("./open-letter.mp3");
+            var loader = document.getElementById("loader");
 
             btn.onclick = function() {
-                modal.style.display = "block";
-                var audio = new Audio("./open-letter.mp3");
+                loader.style.display = "block";
+                btn.style.display = "none";
+                // play from start
+                audio.currentTime = 0;
                 audio.play();
+                // pause after 6 seconds
+                setTimeout(
+                    function(){ 
+                        audio.pause(); 
+                        loader.style.display = "none"; 
+                        modal.style.display = "block"; 
+                        btn.style.display="block";
+                    }, 
+                    6000
+                );
             }
 
             span.onclick = function() {
